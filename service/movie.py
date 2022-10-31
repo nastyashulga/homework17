@@ -28,7 +28,7 @@ class MovieService:
 
     def create(self, data):
         movie = Movie(**data)
-
+        print(data)
         movie.genre = self.genre_service.get_one(movie.id)
         movie.director = self.director_service.get_one(movie.id)
 

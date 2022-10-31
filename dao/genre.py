@@ -6,7 +6,7 @@ class GenreDAO:
         self.session = session
 
     def get_one(self, gid):
-        return self.session.querry(Genre).get(gid)
+        return self.session.query(Genre).get(gid)
 
     def get_all(self):
-        return self.session.querry(Genre).all()
+        return self.session.query(Genre).all()

@@ -1,3 +1,4 @@
+from flask import request
 from flask_restx import Resource, Namespace
 
 from container import movie_service
@@ -15,8 +16,9 @@ class MoviesView(Resource):
 
         return movies_schema.dump(movies), 200
 
-    def post(self, data):
-        movie_service.create(data)
+    def post(self):
+        req_json = request.json
+        movie = movie_service.create(req_json)
         return "", 201
 
 
