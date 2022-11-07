@@ -30,8 +30,10 @@ class MoviesView(Resource):
         return movie_schema.dump(movie), 200
 
     def put(self, mid):
-        movie = movie_service.get_one(mid)
-        movie_service.update(movie)
+        req_json = request.json
+        if "id" not in req_json:
+            req_json["id"] = mid
+        movie_service.update(req_json)
         return "", 204
 
 

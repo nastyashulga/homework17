@@ -34,19 +34,7 @@ class MovieService:
         return self.dao.create(movie)
 
     def update(self, data):
-        mid = data.get('id')
-        movie = self.get_one(mid)
-
-        movie.title = data.get('title')
-        movie.description = data.get('description')
-        movie.year = data.get('year')
-        movie.rating = data.get('rating')
-        movie.director_id = data.get('director_id')
-
-        movie.genre = self.genre_service.get_one(movie.id)
-        movie.director = self.genre_service.get_one(movie.id)
-
-        return self.dao.update()
+        return self.dao.update(data)
 
     def delete(self, mid):
         return self.dao.delete(mid)
