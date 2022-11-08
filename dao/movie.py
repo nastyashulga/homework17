@@ -7,7 +7,7 @@ class MovieDAO:
         self.session = session
 
     def get_one(self, mid):
-        return self.session.query(Movie).filter(Movie.id == mid)
+        return self.session.query(Movie).filter(Movie.id == mid).first()
 
     def get_all(self):
         return self.session.query(Movie).all()
